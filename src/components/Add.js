@@ -4,7 +4,7 @@ const Add = (props) => {
   const [post, setPost] = useState({ post: '', img: '', location: '', date: '' })
 
   const handleChange = (event) => {
-    setPost({ ...post, [event.target.post]: event.target.value })
+    setPost({ ...post, [event.target.name]: event.target.value })
   }
 
   const handleSubmit = (event) => {
@@ -16,11 +16,11 @@ const Add = (props) => {
     <div>
       <form onSubmit={handleSubmit}>
         <label htmlFor="location">location : </label>
-        <input type="text" location="location" onChange={handleChange} />
+        <input type="text" name="location" onChange={handleChange} />
         <br />
         <br />
         <label htmlFor="post">Post : </label>
-        <input type="text" post="post" onChange={handleChange} />
+        <input type="text" name="post" onChange={handleChange} />
         <br />
         <br />
         <label htmlFor="date">date : </label>
