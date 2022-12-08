@@ -40,24 +40,43 @@ const App = () => {
     })
   }
 
+  const[show,setShow]=useState(false);
+
+
+
+
   useEffect(() => {
     getPost()
   }, [])
 
+
   return(
-    <div>
-      <h1>Post</h1>
-      <Add handleCreate={handleCreate}/>
+    <div className='container-fluid m-auto-0'>
+      <nav className="navbar bg-light ">
+        <img src=''/>
+        <button onClick={()=>setShow(!show)}>Add</button>
+        <button></button>
+      </nav>
+      <h1 className= "text-center">twitterClone</h1>
+      {
+      show? <Add handleCreate={handleCreate}/>
+      :null
+      }
+      <div className='row post-container text-center'>
       {post.map((post) => {
          return (
           <div>
+            <div className='col-12'>
             <Post post={post} />
+            </div>
+
             <Edit post={post} handleEdit={handleEdit}/>
-            <button onClick={() => {handleDelete(post)            
-            }} value={post._id}>X</button>
+            <button className="btn btn-outline-danger" onClick={() => {handleDelete(post)            
+            }} value={post._id}>Delete</button>
           </div>
          )
       })}
+      </div>
     </div>
    )
 }

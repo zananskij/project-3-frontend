@@ -1,11 +1,9 @@
 const Post = (props) => {
   return (
     <>
-      <div>
+      <div className="card text-center" style={{width: "45rem"}} >
         <div>
-          <h4>
-            <a>{props.post.location}</a>
-          </h4>
+          {props.post.location}
         </div>
         <img src={props.post.img} />
         <p>{props.post.post}</p>
