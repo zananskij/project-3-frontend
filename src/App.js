@@ -3,6 +3,7 @@ import axios from 'axios'
 import Post from './components/Post'
 import Add from './components/Add'
 import Edit from './components/Edit'
+import logo from './T.png'
 
 const App = () => {
   const [post, setPost] = useState([])
@@ -52,8 +53,8 @@ const App = () => {
 
   return(
     <div className='container-fluid m-auto-0'>
-      <nav className="navbar bg-light ">
-        <img src=''/>
+      <nav className="navbar bg-light">
+        <img className=' w-25 rounded'  src={logo}/>
         <button onClick={()=>setShow(!show)}>Add</button>
         <button></button>
       </nav>
@@ -65,8 +66,8 @@ const App = () => {
       <div className='row post-container text-center'>
       {post.map((post) => {
          return (
-          <div>
-            <div className='col-12'>
+          <div className='m-2'>
+            <div className='col-12 m-auto '>
             <Post post={post} />
             </div>
 

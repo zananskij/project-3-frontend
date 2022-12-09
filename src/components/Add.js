@@ -13,8 +13,8 @@ const Add = (props) => {
   }
 
   return (
-    <div className='container w-50 '>
-      <div className="p-5 mb-5 bg-light rounded w-50
+    <div className='container-fluid'>
+      <div className="mb-5 bg-light 
       m-auto ">
         <form onSubmit={handleSubmit}>
           <label className='form-label' htmlFor="location ">location : </label>
