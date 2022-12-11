@@ -3,9 +3,15 @@ import axios from 'axios'
 import Post from './components/Post'
 import Add from './components/Add'
 import Edit from './components/Edit'
+import Search from './components/Search'
 
 const App = () => {
   const [post, setPost] = useState([])
+
+  // search
+  const [isSearching, setIsSearching] = useState(false)
+  const [filteredPost, setFilteredPost] = useState([])
+  // search
 
   const getPost = () => {
     axios
@@ -38,6 +44,38 @@ const App = () => {
       getPost()
     })
   }
+  // search
+  // search
+  // search
+  const onSearchChange = (searchInput) => {
+    const searchInputLower = searchInput.toLowerCase()
+    if (searchInput.length > 0) {
+      setIsSearching(true)
+      const result = post.filter((post) => {
+        return (
+          post.location.toLowerCase().match(searchInputLower) ||
+          post.post.toLowerCase().match(searchInputLower) ||
+          post.date.toLowerCase().match(searchInputLower)
+        )
+      })
+      setFilteredPost(result)
+    } else {
+      setIsSearching(false)
+    }
+  }
+
+  const NoSearchResults = () => {
+    return (
+      <>
+        <p className="noResults">No related posts found...</p>
+      </>
+    )
+  }
+
+  const postToDisplay = isSearching ? filteredPost : post
+  // search
+  // search
+  // search
 
   const [show, setShow] = useState(false)
 
@@ -49,13 +87,14 @@ const App = () => {
     <div className="container-fluid m-auto-0">
       <nav className="navbar bg-light">
         <img className=" w-25 rounded" />
+        <Search onSearchChange={onSearchChange} />
         <button onClick={() => setShow(!show)}>Add</button>
         <button></button>
       </nav>
       <h1 className="text-center">twitterClone</h1>
       {show ? <Add handleCreate={handleCreate} /> : null}
       <div className="row post-container text-center">
-        {post.map((post) => {
+        {postToDisplay.map((post) => {
           return (
             <div className="m-2">
               <div className="col-12 m-auto ">
