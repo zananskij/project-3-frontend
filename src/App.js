@@ -1,13 +1,9 @@
-import { useState, useEffect, useRef } from 'react'
+import { useState, useEffect } from 'react'
 import axios from 'axios'
 import Post from './components/Post'
 import Add from './components/Add'
 import Edit from './components/Edit'
 import SearchBar from './components/Search'
-
-import React, { Component } from 'react'
-import { GoogleMap, LoadScript } from '@react-google-maps/api'
-import logo from './T.png'
 
 const App = () => {
   const [post, setPost] = useState([])
@@ -88,47 +84,24 @@ const App = () => {
 
   return (
     <div className="container-fluid m-auto-0">
-      <nav className="navbar bg-light ">
-        <img src="" />
-        <SearchBar onSearchChange={onSearchChange} />
-        <button className="btn btn-success" onClick={() => setShow(!show)}>
-          Add
-        </button>
+      <nav className="navbar bg-light">
+        <img className=" w-25 rounded" src={logo} />
+        <button onClick={() => setShow(!show)}>Add</button>
         <button></button>
       </nav>
       <h1 className="text-center">twitterClone</h1>
       {show ? <Add handleCreate={handleCreate} /> : null}
       <div className="row post-container text-center">
-        {postToDisplay.map((post) => {
+        {post.map((post) => {
           return (
-            <div>
-              <div className="col-12">
+            <div className="m-2">
+              <div className="col-12 m-auto ">
                 <Post post={post} />
               </div>
 
-  return(
-    <div className='container-fluid m-auto-0'>
-      <nav className="navbar bg-light">
-        <img className=' w-25 rounded'  src={logo}/>
-        <button onClick={()=>setShow(!show)}>Add</button>
-        <button></button>
-      </nav>
-      <h1 className= "text-center">twitterClone</h1>
-      {
-      show? <Add handleCreate={handleCreate}/>
-      :null
-      }
-      <div className='row post-container text-center'>
-      {post.map((post) => {
-         return (
-          <div className='m-2'>
-            <div className='col-12 m-auto '>
-            <Post post={post} />
-            </div>
-
               <Edit post={post} handleEdit={handleEdit} />
               <button
-                className="btn btn-danger"
+                className="btn btn-outline-danger"
                 onClick={() => {
                   handleDelete(post)
                 }}
@@ -139,13 +112,9 @@ const App = () => {
             </div>
           )
         })}
-        <NoSearchResults />
       </div>
     </div>
   )
 }
 
 export default App
-
-
-

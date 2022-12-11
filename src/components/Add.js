@@ -1,5 +1,4 @@
 import { useState } from 'react'
-import Map from './Map'
 
 const Add = (props) => {
   const [post, setPost] = useState({ post: '', img: '', location: '', date: '' })
@@ -14,47 +13,24 @@ const Add = (props) => {
   }
 
   return (
-    <div className="container w-50 ">
-      <div
-        className="p-5 mb-5 bg-light rounded w-50
-      m-auto "
-      >
-    <div className='container-fluid'>
-      <div className="mb-5 bg-light 
-      m-auto ">
-        <form onSubmit={handleSubmit}>
-          <label className="form-label" htmlFor="location ">
-            location :{' '}
-          </label>
-          <input className=" form-control " type="text" name="location" onChange={handleChange} />
-          <br />
-          <br />
-          <div className="mb-3">
-            <label className="form-label" htmlFor="post">
-              Post :{' '}
-            </label>
-            <input className=" form-control " type="text" name="post" onChange={handleChange} />
-            <br />
-            <br />
-          </div>
-          <div className="mb-3">
-            <label className="form-label" htmlFor="date">
-              date :{' '}
-            </label>{' '}
-            <br></br>
-            <input className=" form-control " type="date" name="date" onChange={handleChange} />
-            <br></br>
-          </div>
-          <div className="mb-3">
-            <label className="form-label" htmlFor="img">
-              Image :{' '}
-            </label>
-            <input className=" form-control " type="text" name="img" onChange={handleChange} />
-            <br></br>
-          </div>
-          <input className="btn btn-danger" type="submit" />
-        </form>
-      </div>
+    <div>
+      <form onSubmit={handleSubmit}>
+        <label htmlFor="location">location : </label>
+        <input type="text" name="location" onChange={handleChange} />
+        <br />
+        <br />
+        <label htmlFor="post">Post : </label>
+        <input type="text" name="post" onChange={handleChange} />
+        <br />
+        <br />
+        <label htmlFor="date">date : </label>
+        <input type="date" name="date" onChange={handleChange} />
+        <br></br>
+        <label htmlFor="img">Image : </label>
+        <input type="text" name="img" onChange={handleChange} />
+        <br></br>
+        <input type="submit" />
+      </form>
     </div>
   )
 }
