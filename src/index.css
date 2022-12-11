@@ -1,4 +1,5 @@
 body {
+  padding: 0;
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans',
     'Droid Sans', 'Helvetica Neue', sans-serif;
@@ -17,6 +18,7 @@ code {
 }
 
 .col-12 {
+<<<<<<< HEAD
   margin: 3vh 0vh;
   display: flex;
   justify-content: center;
@@ -28,4 +30,9 @@ code {
 }
 img {
   padding: 1em 0em;
+=======
+margin: 10vh;
+display: flex;
+justify-content: center;
+>>>>>>> 86b20fbaa9024255486208ac1abe5d3fbcc26ee7
 }

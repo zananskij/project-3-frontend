@@ -7,6 +7,7 @@ import SearchBar from './components/Search'
 
 import React, { Component } from 'react'
 import { GoogleMap, LoadScript } from '@react-google-maps/api'
+import logo from './T.png'
 
 const App = () => {
   const [post, setPost] = useState([])
@@ -105,6 +106,26 @@ const App = () => {
                 <Post post={post} />
               </div>
 
+  return(
+    <div className='container-fluid m-auto-0'>
+      <nav className="navbar bg-light">
+        <img className=' w-25 rounded'  src={logo}/>
+        <button onClick={()=>setShow(!show)}>Add</button>
+        <button></button>
+      </nav>
+      <h1 className= "text-center">twitterClone</h1>
+      {
+      show? <Add handleCreate={handleCreate}/>
+      :null
+      }
+      <div className='row post-container text-center'>
+      {post.map((post) => {
+         return (
+          <div className='m-2'>
+            <div className='col-12 m-auto '>
+            <Post post={post} />
+            </div>
+
               <Edit post={post} handleEdit={handleEdit} />
               <button
                 className="btn btn-danger"
@@ -125,3 +146,6 @@ const App = () => {
 }
 
 export default App
+
+
+
