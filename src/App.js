@@ -5,6 +5,9 @@ import Add from './components/Add'
 import Edit from './components/Edit'
 import Search from './components/Search'
 
+// load api
+import { GoogleMap, useLoadScript } from '@react-google-maps/api'
+
 const App = () => {
   const [post, setPost] = useState([])
 
@@ -12,6 +15,12 @@ const App = () => {
   const [isSearching, setIsSearching] = useState(false)
   const [filteredPost, setFilteredPost] = useState([])
   // search
+
+  // check if map loaded
+  const { isLoaded } = useLoadScript({
+    googleMapsApiKey: process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY,
+  })
+  // map
 
   const getPost = () => {
     axios
@@ -88,8 +97,12 @@ const App = () => {
       <nav className="navbar bg-light">
         <img className=" w-25 rounded" />
         <Search onSearchChange={onSearchChange} />
+        <NoSearchResults />
         <button onClick={() => setShow(!show)}>Add</button>
         <button></button>
+
+        {/* set initial positioning & class for styling */}
+        <GoogleMap zoom={10} center={{ lat: 44, lng: -80 }} mapContainerClassName="map-container"></GoogleMap>
       </nav>
       <h1 className="text-center">twitterClone</h1>
       {show ? <Add handleCreate={handleCreate} /> : null}
