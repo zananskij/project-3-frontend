@@ -101,7 +101,6 @@ const App = () => {
         <button onClick={() => setShow(!show)}>Add</button>
         <button></button>
 
-        {/* set initial positioning & class for styling */}
         <GoogleMap zoom={10} center={{ lat: 44, lng: -80 }} mapContainerClassName="map-container"></GoogleMap>
       </nav>
       <h1 className="text-center">twitterClone</h1>
