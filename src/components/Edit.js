@@ -9,6 +9,9 @@ const Edit = (props) => {
   // const [value, setValue] = useState(null);
   //   edit
   //   edit
+  //   edit
+  //   edit
+  //   edit
   const handleChange = (event) => {
     setPost({ ...post, [event.target.name]: event.target.value })
   }
