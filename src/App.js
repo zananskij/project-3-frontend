@@ -18,10 +18,10 @@ const App = () => {
   const [filteredPost, setFilteredPost] = useState([])
   // search
 
-  // check if map loaded
-  const { isLoaded } = useLoadScript({
-    googleMapsApiKey: process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY,
-  })
+  // check if map loaded || dont need to load twice
+  // const { isLoaded } = useLoadScript({
+  //   googleMapsApiKey: process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY,
+  // })
   // map
 
   // modal
@@ -115,9 +115,10 @@ const App = () => {
         <Search onSearchChange={onSearchChange} />
         <button onClick={() => setShow(!show)}>Add</button>;
         <>
-          <Button variant="primary" onClick={handleShow}>
+          {/* no longer needed  */}
+          {/* <Button variant="primary" onClick={handleShow}>
             Modal Btn
-          </Button>
+          </Button> */}
           {/* 
 MAP COMPONENT NESTED INSIDE MODAL COMPONENT */}
           <Modal show={showModal} onHide={handleClose}>
@@ -138,10 +139,10 @@ MAP COMPONENT NESTED INSIDE MODAL COMPONENT */}
       </nav>
       <h1 className="text-center">twitterClone</h1>
       {show ? <Add handleCreate={handleCreate} /> : null}
-      <div className="row post-container text-center">
+      <div className="row posts-container text-center">
         {postToDisplay.map((post) => {
           return (
-            <div className="m-2">
+            <div className="post-container m-2">
               <div className="col-12 m-auto ">
                 <Post post={post} />
               </div>
