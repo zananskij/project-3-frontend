@@ -4,6 +4,8 @@ import Post from './components/Post'
 import Add from './components/Add'
 import Edit from './components/Edit'
 import Search from './components/Search'
+import Button from 'react-bootstrap/Button'
+import Modal from 'react-bootstrap/Modal'
 
 // load api
 import { GoogleMap, useLoadScript } from '@react-google-maps/api'
@@ -21,6 +23,16 @@ const App = () => {
     googleMapsApiKey: process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY,
   })
   // map
+
+  // modal
+  const [showModal, setShowModal] = useState(false)
+
+  const handleClose = () => setShowModal(false)
+  const handleShow = () => setShowModal(true)
+  // modal
+
+  // click target id
+  // const targetClick = () => {}
 
   const getPost = () => {
     axios
@@ -73,6 +85,10 @@ const App = () => {
     }
   }
 
+  // const dropdownFunction = () => {
+  //   document.getElementById(`dropdown${props.post.id}`).classList.toggle('show')
+  // }
+
   const NoSearchResults = () => {
     return (
       <>
@@ -97,11 +113,28 @@ const App = () => {
       <nav className="navbar bg-light">
         <img className=" w-25 rounded" />
         <Search onSearchChange={onSearchChange} />
-        <NoSearchResults />
-        <button onClick={() => setShow(!show)}>Add</button>
-        <button></button>
-
-        <GoogleMap zoom={10} center={{ lat: 44, lng: -80 }} mapContainerClassName="map-container"></GoogleMap>
+        <button onClick={() => setShow(!show)}>Add</button>;
+        <>
+          <Button variant="primary" onClick={handleShow}>
+            Modal Btn
+          </Button>
+          {/* 
+MAP COMPONENT NESTED INSIDE MODAL COMPONENT */}
+          <Modal show={showModal} onHide={handleClose}>
+            <Modal.Header closeButton>
+              <Modal.Title>Location</Modal.Title>
+            </Modal.Header>
+            <Modal.Body>
+              {' '}
+              <GoogleMap zoom={7} center={{ lat: 28, lng: -81 }} mapContainerClassName="map-container"></GoogleMap>
+            </Modal.Body>
+            <Modal.Footer>
+              <Button variant="secondary" onClick={handleClose}>
+                Close
+              </Button>
+            </Modal.Footer>
+          </Modal>
+        </>
       </nav>
       <h1 className="text-center">twitterClone</h1>
       {show ? <Add handleCreate={handleCreate} /> : null}
@@ -126,6 +159,7 @@ const App = () => {
             </div>
           )
         })}
+        <NoSearchResults />
       </div>
     </div>
   )
